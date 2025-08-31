@@ -1,10 +1,11 @@
-import readlinesync = require("readline-sync");
+import leia = require("readline-sync");
 
 export function main() {
 
     let opcao: number;
+    let continua: boolean = true
 
-    while (true) {
+    while (continua) {
 
         console.log("*****************************************************");
         console.log("                                                     ");
@@ -25,8 +26,7 @@ export function main() {
         console.log("*****************************************************");
         console.log("                                                     ");
 
-        console.log("Entre com a opção desejada: ");
-        opcao = readlinesync.questionInt("");
+        opcao = leia.questionInt("Entre com a opção desejada: ");
 
         if (opcao == 9) {
             console.log("\nBanco do Brazil com Z - O seu Futuro começa aqui!");
@@ -80,9 +80,9 @@ export function main() {
 
 export function sobre(): void {
     console.log("\n*****************************************************");
-    console.log("Projeto Desenvolvido por: ");
-    console.log("Generation Brasil - generation@generation.org");
-    console.log("github.com/conteudoGeneration");
+    console.log("Projeto Desenvolvido por: Ayron Paulo de Souza Sant Anna");
+    console.log("Generation Brasil - ayronpaulo2r@gmail.com");
+    console.log("https://github.com/Ayron0");
     console.log("*****************************************************");
 }
 

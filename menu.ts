@@ -46,34 +46,6 @@ export function main() {
                 console.log(colors.fg.redstrong, "\n\nCriar Conta\n\n", colors.reset);
 
                 break;
-            case 2:
-                console.log("\n\nListar todas as Contas\n\n");
-
-                break;
-            case 3:
-                console.log("\n\nConsultar dados da Conta - por número\n\n");
-
-                break;
-            case 4:
-                console.log("\n\nAtualizar dados da Conta\n\n");
-
-                break;
-            case 5:
-                console.log("\n\nApagar uma Conta\n\n");
-
-                break;
-            case 6:
-                console.log("\n\nSaque\n\n");
-
-                break;
-            case 7:
-                console.log("\n\nDepósito\n\n");
-
-                break;
-            case 8:
-                console.log("\n\nTransferência entre Contas\n\n");
-
-                break;
             default:
                 console.log("\nOpção Inválida!\n");
 

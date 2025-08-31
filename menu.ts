@@ -1,4 +1,5 @@
 import leia = require("readline-sync");
+import { colors } from './src/util/Colors'
 
 export function main() {
 
@@ -7,7 +8,9 @@ export function main() {
 
     while (continua) {
 
-        console.log("*****************************************************");
+     
+        console.log(colors.bg.black, colors.fg.yellow,
+            "*****************************************************");
         console.log("                                                     ");
         console.log("                BANCO DO BRAZIL COM Z                ");
         console.log("                                                     ");
@@ -24,19 +27,23 @@ export function main() {
         console.log("            9 - Sair                                 ");
         console.log("                                                     ");
         console.log("*****************************************************");
-        console.log("                                                     ");
+        console.log("                                                     ",
+            colors.reset
+        );
 
         opcao = leia.questionInt("Entre com a opcao desejada: ");
 
         if (opcao == 9) {
-            console.log("\nBanco do Brazil com Z - O seu Futuro começa aqui!");
+            console.log(colors.fg.greenstrong,
+                "\nBanco do Brazil com Z - O seu Futuro começa aqui!");
             sobre();
+            console.log(colors.reset, "");
             process.exit(0);
         }
 
         switch (opcao) {
             case 1:
-                console.log("\n\nCriar Conta\n\n");
+                console.log(colors.fg.redstrong, "\n\nCriar Conta\n\n", colors.reset);
 
                 break;
             case 2:

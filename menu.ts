@@ -1,10 +1,18 @@
 import leia = require("readline-sync");
-import { colors } from './src/util/Colors'
+import { colors } from './src/util/Colors';
+import { Conta } from './src/model/Conta';
 
 export function main() {
 
     let opcao: number;
     let continua: boolean = true
+
+    let conta: Conta = new Conta(1, 123, 1, "Adriana", 10100);
+    conta.visualizar();
+    conta.sacar(10500);
+    conta.visualizar();
+    conta.depositar(5000);
+    conta.visualizar();
 
     while (continua) {
 
@@ -55,7 +63,6 @@ export function main() {
 
 }
 
-/* Função com os dados da pessoa desenvolvedora */
 
 export function sobre(): void {
     console.log("\n*****************************************************");

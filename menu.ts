@@ -1,6 +1,8 @@
 import leia = require("readline-sync");
 import { colors } from './src/util/Colors';
 import { Conta } from './src/model/Conta';
+import { ContaCorrente } from './src/model/ContaCorrente';
+import { ContaPoupanca } from './src/model/ContaPoupanca';
 
 export function main() {
 
@@ -13,6 +15,20 @@ export function main() {
     conta.visualizar();
     conta.depositar(5000);
     conta.visualizar();
+
+    const contacorrente: ContaCorrente = new ContaCorrente(2, 123, 1, "Thiago", 20000, 2000);
+    contacorrente.visualizar();
+    contacorrente.sacar(3000);
+    contacorrente.visualizar();
+    contacorrente.depositar(1050);
+    contacorrente.visualizar();
+
+    const contapoupanca: ContaPoupanca = new ContaPoupanca(3, 123, 2, "Indio", 55000, 10);
+    contapoupanca.visualizar();
+    contapoupanca.sacar(200);
+    contapoupanca.visualizar();
+    contapoupanca.depositar(1000);
+    contapoupanca.visualizar();
 
     while (continua) {
 

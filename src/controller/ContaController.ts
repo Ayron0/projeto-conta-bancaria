@@ -8,7 +8,15 @@ export class ContaController implements ContaRepository {
     numero: number = 0;
 
     procurarPorNumero(numero: number): void {
-        throw new Error("Method not implemented.");
+        let buscaConta = this.buscarNoArray(numero);
+        
+        if(buscaConta != null) {
+            buscaConta.visualizar();
+        }else{
+            console.log(colors.fg.red, "\nA Conta numero: " + numero
+                + " nao foi encontrada!", colors.reset
+            );
+        }
     }
     listarTodas(): void {
         for (let conta of this.listaContas){
@@ -42,6 +50,18 @@ export class ContaController implements ContaRepository {
     //Gera o número da conta
     public gerarNumero(): number {
         return ++ this.numero;
+    }
+
+    /* Checa se uma conta existe*/
+    public buscarNoArray(numero: number): Conta | null {
+        for( let conta of this.listaContas){
+            if (conta.numero === numero){
+                return conta;
+            }
+
+        }
+
+        return null;
     }
 
 }

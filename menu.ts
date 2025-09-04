@@ -8,7 +8,8 @@ import { readlinkSync } from "fs";
 export function main() {
 
     let contas: ContaController = new ContaController();
-    let opcao, numero, agencia, tipo, saldo, limite, aniversario: number;
+    let opcao, numero, agencia, tipo, limite, aniversario: number;
+    let saldo: number;
     let titular: string;
     let continua: boolean = true;
     const tiposContas = [ 'Conta Corrente', 'Conta Poupanca'];
@@ -103,23 +104,59 @@ export function main() {
                 console.log(colors.fg.redstrong, "\n\nListar todas as Contas\n\n", colors.reset);
                 contas.listarTodas();
 
-                
                 break;
             
             case 3:
                 console.log(colors.fg.whitestrong, "\n\nConsultar dados da Conta - por número\n\n", colors.reset);
-
+                console.log("Digite o numero da conta: ");
+                numero = leia.questionInt("");
+                contas.procurarPorNumero(numero);
                 
                 break;
             case 4:
                 console.log(colors.fg.whitestrong, "\n\nAtualizar dados da Conta\n\n", colors.reset);
+                console.log("Digite o numero da conta: ");
+                numero = leia.questionInt("");
 
+                let conta = contas.buscarNoArray(numero);
+
+                if (conta != null) {
+                    console.log("Digite o numero da agencia: ");
+                    agencia = leia.questionInt("");
+
+                    console.log("Digite o nome do titular da conta: ");
+                    titular = leia.question("");
+
+                    tipo = conta.tipo;
+
+                    console.log("\nDigite o saldo da conta (R$): ");
+                    saldo = leia.questionFloat("");
+
+                    switch(tipo) {
+                        case 1:
+                            console.log("\nDigite o saldo da conta (R$): ");
+                            limite = leia.questionFloat("");
+                            contas.atualizar(new ContaCorrente(numero, agencia, tipo, titular, saldo, limite));
+                            break;
+                        case 2:
+                            console.log("Digite o dia do aniversario da Conta Poupanca: ");
+                            aniversario = leia.questionInt("");
+                            contas.atualizar(new ContaPoupanca(numero, agencia, tipo, titular, saldo, aniversario));
+                            break;
+
+                    }
+                } else {
+                    console.log(colors.fg.red, "\nA Conta numero: " + numero + " nao foi encontrada!", colors.reset);
+
+                }
                 
                 break;
             case 5:
                 console.log(colors.fg.whitestrong, "\n\nApagar uma Conta\n\n", colors.reset);
+                console.log("Digite o numero da Conta: ");
+                numero = leia.questionInt("");
+                contas.deletar(numero);
 
-                
                 break;
             case 6:
                 console.log(colors.fg.whitestrong, "\n\nSaque\n\n", colors.reset);

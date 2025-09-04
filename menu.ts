@@ -2,11 +2,16 @@ import leia = require("readline-sync");
 import { colors } from './src/util/Colors';
 import { ContaCorrente } from './src/model/ContaCorrente';
 import { ContaPoupanca } from './src/model/ContaPoupanca';
+import { ContaController } from "./src/controller/ContaController";
+import { readlinkSync } from "fs";
 
 export function main() {
 
-    let opcao: number;
-    let continua: boolean = true
+    let contas: ContaController = new ContaController();
+    let opcao, numero, agencia, tipo, saldo, limite, aniversario: number;
+    let titular: string;
+    let continua: boolean = true;
+    const tiposContas = [ 'Conta Corrente', 'Conta Poupanca'];
 
     console.log(colors.bg.black, colors.fg.blue)
     const contacorrente: ContaCorrente = new ContaCorrente(2, 123, 1, "Thiago", 20000, 2000);
@@ -62,6 +67,72 @@ export function main() {
         switch (opcao) {
             case 1:
                 console.log(colors.fg.redstrong, "\n\nCriar Conta\n\n", colors.reset);
+
+                console.log("Digite o numero da agencia: ");
+                agencia = leia.questionInt("");
+
+                console.log("Digite o nome do titular da conta: ");
+                titular = leia.question("")
+
+                console.log("Digite o tipo da conta: ");
+                tipo = leia.keyInSelect(tiposContas, "", {cancel: false}) + 1;
+
+                console.log("Digite o Saldo da conta (R$): ");
+                saldo = leia.questionFloat("");
+
+                switch (tipo) {
+                    case 1:
+                        console.log("Digite o limite da Conta (R$): ");
+                        limite = leia.questionFloat("");
+                        contas.cadastrar(
+                            new ContaCorrente(contas.gerarNumero(), agencia, tipo, titular, saldo, limite)
+                        );
+                        break;
+                    
+                    case 2:
+                        console.log("Digite o dia do aniversario da conta poupanca: ");
+                        aniversario = leia.questionInt("");
+                        contas.cadastrar(
+                            new ContaPoupanca(contas.gerarNumero(), agencia, tipo, titular, saldo, aniversario)
+                        );
+                        break;
+                }
+                break;
+
+            case 2:
+                console.log(colors.fg.redstrong, "\n\nListar todas as Contas\n\n", colors.reset);
+                contas.listarTodas();
+
+                
+                break;
+            
+            case 3:
+                console.log(colors.fg.whitestrong, "\n\nConsultar dados da Conta - por número\n\n", colors.reset);
+
+                
+                break;
+            case 4:
+                console.log(colors.fg.whitestrong, "\n\nAtualizar dados da Conta\n\n", colors.reset);
+
+                
+                break;
+            case 5:
+                console.log(colors.fg.whitestrong, "\n\nApagar uma Conta\n\n", colors.reset);
+
+                
+                break;
+            case 6:
+                console.log(colors.fg.whitestrong, "\n\nSaque\n\n", colors.reset);
+
+                
+                break;
+            case 7:
+                console.log(colors.fg.whitestrong, "\n\nDepósito\n\n", colors.reset);
+
+           
+                break;
+            case 8:
+                console.log(colors.fg.whitestrong, "\n\nTransferência entre Contas\n\n", colors.reset);
 
                 break;
             default:

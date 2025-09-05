@@ -170,7 +170,12 @@ export function main() {
                 break;
             case 7:
                 console.log(colors.fg.whitestrong, "\n\nDepósito\n\n", colors.reset);
+                console.log("Digite o numero da Conta: ");
+                numero = leia.questionInt("");
 
+                console.log("\nDigite o valor do Deposito (R$): ");
+                valor = leia.questionFloat("");
+                contas.depositar(numero, valor);
            
                 break;
             case 8:

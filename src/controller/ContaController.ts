@@ -47,6 +47,7 @@ export class ContaController implements ContaRepository {
         let buscaConta = this.buscarNoArray(numero);
 
         if (buscaConta != null) {
+            //Splice: ele procura uma conta e apaga ela. Esse 1 significa que assim que ele encontra, apaga o primeiro valor
             this.listaContas.splice(this.listaContas.indexOf(buscaConta), 1);
             console.log(colors.fg.green, "\nA Conra numero: " + numero +
                 " foi apagada com sucesso!", colors.reset

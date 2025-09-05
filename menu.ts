@@ -8,7 +8,7 @@ import { readlinkSync } from "fs";
 export function main() {
 
     let contas: ContaController = new ContaController();
-    let opcao, numero, agencia, tipo, limite, aniversario, valor, numeroDestino: number;
+    let opcao: number, numero: number, agencia: number, tipo: number, limite: number, aniversario: number, valor: number, numeroDestino: number;
     let saldo: number;
     let titular: string;
     let continua: boolean = true;

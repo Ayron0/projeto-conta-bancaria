@@ -13,9 +13,7 @@ export class ContaController implements ContaRepository {
         if(buscaConta != null) {
             buscaConta.visualizar();
         }else{
-            console.log(colors.fg.red, "\nA Conta numero: " + numero
-                + " nao foi encontrada!", colors.reset
-            );
+            console.log(colors.fg.red,`\nA Conta numero: ${numero} não foi encontrada!`, colors.reset)
         }
     }
     listarTodas(): void {
@@ -38,9 +36,7 @@ export class ContaController implements ContaRepository {
                 " foi atualizada com sucesso!", colors.reset
             );
         } else {
-            console.log(colors.fg.red, "\nA conta numero: " + conta.numero +
-                " nao foi encontrada!", colors.reset
-            );
+            console.log(colors.fg.red,`\nA Conta numero: ${conta.numero} não foi encontrada!`, colors.reset)
         }
     }
     deletar(numero: number): void {
@@ -53,9 +49,7 @@ export class ContaController implements ContaRepository {
                 " foi apagada com sucesso!", colors.reset
             );
         } else {
-             console.log(colors.fg.red, "\nA conta numero: " + numero +
-                " nao foi encontrada!", colors.reset
-            );
+            console.log(colors.fg.red,`\nA Conta numero: ${numero} não foi encontrada!`, colors.reset)
         }
     }
     sacar(numero: number, valor: number): void {
@@ -68,8 +62,7 @@ export class ContaController implements ContaRepository {
             }
 
         } else
-             console.log(colors.fg.red, "\nA conta numero: " + numero +
-                " nao foi encontrada!", colors.reset);
+            console.log(colors.fg.red,`\nA Conta numero: ${numero} não foi encontrada!`, colors.reset)
     }
     depositar(numero: number, valor: number): void {
         let conta = this.buscarNoArray(numero);
@@ -79,8 +72,7 @@ export class ContaController implements ContaRepository {
                 " foi efetuado com sucesso!", colors.reset)
 
         } else
-             console.log(colors.fg.red, "\nA conta numero: " + numero +
-                " nao foi encontrada!", colors.reset);
+            console.log(colors.fg.red,`\nA Conta numero: ${numero} não foi encontrada!`, colors.reset)
 
 
     }

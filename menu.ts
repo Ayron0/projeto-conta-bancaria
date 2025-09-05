@@ -14,6 +14,22 @@ export function main() {
     let continua: boolean = true;
     const tiposContas = [ 'Conta Corrente', 'Conta Poupanca'];
 
+    console.log("\nCriar Contas\n");
+
+    let cc1: ContaCorrente = new ContaCorrente(contas.gerarNumero(), 123, 1, "João da Silva", 1000, 100.0);
+    contas.cadastrar(cc1);
+
+    let cc2: ContaCorrente = new ContaCorrente(contas.gerarNumero(), 124, 1, "Maria da Silva", 2000, 100.0);
+    contas.cadastrar(cc2);
+
+    let cp1: ContaPoupanca = new ContaPoupanca(contas.gerarNumero(), 125, 2, "Mariana dos Santos", 4000, 12);
+    contas.cadastrar(cp1);
+
+    let cp2: ContaPoupanca = new ContaPoupanca(contas.gerarNumero(), 125, 2, "Juliana Ramos", 8000, 15);
+    contas.cadastrar(cp2);
+
+    contas.listarTodas();
+
     console.log(colors.bg.black, colors.fg.blue)
     const contacorrente: ContaCorrente = new ContaCorrente(2, 123, 1, "Thiago", 20000, 2000);
     contacorrente.visualizar();
@@ -150,8 +166,7 @@ export function main() {
 
                     }
                 } else {
-                    console.log(colors.fg.red, "\nA Conta numero: " + numero + " nao foi encontrada!", colors.reset);
-
+                    console.log(colors.fg.red,`\nA Conta numero: ${numero} não foi encontrada!`, colors.reset)
                 }
                 
                 keyPress()

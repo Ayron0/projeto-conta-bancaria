@@ -8,7 +8,7 @@ import { readlinkSync } from "fs";
 export function main() {
 
     let contas: ContaController = new ContaController();
-    let opcao, numero, agencia, tipo, limite, aniversario: number;
+    let opcao, numero, agencia, tipo, limite, aniversario, valor, numeroDestino: number;
     let saldo: number;
     let titular: string;
     let continua: boolean = true;
@@ -160,8 +160,13 @@ export function main() {
                 break;
             case 6:
                 console.log(colors.fg.whitestrong, "\n\nSaque\n\n", colors.reset);
+                console.log("Digite o numero da Conta: ");
+                numero = leia.questionInt("");
 
-                
+                console.log("\nDigite o valor do Saque (R$): ");
+                valor = leia.questionFloat("");
+                contas.sacar(numero, valor);
+
                 break;
             case 7:
                 console.log(colors.fg.whitestrong, "\n\nDepósito\n\n", colors.reset);

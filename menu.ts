@@ -98,12 +98,15 @@ export function main() {
                         );
                         break;
                 }
+
+                keyPress()
                 break;
 
             case 2:
                 console.log(colors.fg.redstrong, "\n\nListar todas as Contas\n\n", colors.reset);
                 contas.listarTodas();
 
+                keyPress()
                 break;
             
             case 3:
@@ -111,7 +114,8 @@ export function main() {
                 console.log("Digite o numero da conta: ");
                 numero = leia.questionInt("");
                 contas.procurarPorNumero(numero);
-                
+
+                keyPress()
                 break;
             case 4:
                 console.log(colors.fg.whitestrong, "\n\nAtualizar dados da Conta\n\n", colors.reset);
@@ -150,6 +154,7 @@ export function main() {
 
                 }
                 
+                keyPress()
                 break;
             case 5:
                 console.log(colors.fg.whitestrong, "\n\nApagar uma Conta\n\n", colors.reset);
@@ -157,6 +162,7 @@ export function main() {
                 numero = leia.questionInt("");
                 contas.deletar(numero);
 
+                keyPress()
                 break;
             case 6:
                 console.log(colors.fg.whitestrong, "\n\nSaque\n\n", colors.reset);
@@ -167,6 +173,7 @@ export function main() {
                 valor = leia.questionFloat("");
                 contas.sacar(numero, valor);
 
+                keyPress()
                 break;
             case 7:
                 console.log(colors.fg.whitestrong, "\n\nDepósito\n\n", colors.reset);
@@ -176,7 +183,8 @@ export function main() {
                 console.log("\nDigite o valor do Deposito (R$): ");
                 valor = leia.questionFloat("");
                 contas.depositar(numero, valor);
-           
+                
+                keyPress()
                 break;
             case 8:
                 console.log(colors.fg.whitestrong, "\n\nTransferência entre Contas\n\n", colors.reset);
@@ -191,10 +199,12 @@ export function main() {
 
                 contas.transferir(numero, numeroDestino, valor);
 
+                keyPress()
                 break;
             default:
                 console.log("\nOpção Inválida!\n");
 
+                keyPress()
                 break;
         }
     }
@@ -208,6 +218,12 @@ export function sobre(): void {
     console.log("Generation Brasil - ayronpaulo2r@gmail.com");
     console.log("https://github.com/Ayron0");
     console.log("*****************************************************");
+}
+
+function keyPress(): void {
+    console.log(colors.reset, " ");
+    console.log("\nPressione enter para continuar...");
+    leia.prompt();
 }
 
 main();

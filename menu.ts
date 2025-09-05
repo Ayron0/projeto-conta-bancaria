@@ -180,6 +180,16 @@ export function main() {
                 break;
             case 8:
                 console.log(colors.fg.whitestrong, "\n\nTransferência entre Contas\n\n", colors.reset);
+                console.log("Digite o numero da Conta de Origem: ");
+                numero = leia.questionInt("");
+
+                console.log("\nDigite o numero da Conta de Destino: ");
+                numeroDestino = leia.questionFloat("");
+
+                console.log("\nDigite o valor do Deposito (R$): ");
+                valor = leia.questionFloat("");
+
+                contas.transferir(numero, numeroDestino, valor);
 
                 break;
             default:
